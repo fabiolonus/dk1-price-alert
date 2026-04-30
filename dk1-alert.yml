@@ -1,0 +1,36 @@
+name: DK1 Daily Price Alert
+
+on:
+  schedule:
+    # 08:00 Copenhagen time = 07:00 UTC (winter) / 06:00 UTC (summer)
+    # Using 06:00 UTC to cover both CET and CEST
+    - cron: '0 6 * * *'
+  workflow_dispatch:  # allows manual trigger from GitHub UI
+
+jobs:
+  send-alert:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+        working-directory: scheduler
+
+      - name: Send DK1 price alert
+        working-directory: scheduler
+        env:
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+          TO_EMAIL:  ${{ vars.TO_EMAIL }}
+          THRESHOLD: ${{ vars.THRESHOLD }}
+        run: node scheduler.js --test
