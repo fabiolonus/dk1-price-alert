@@ -1,0 +1,15 @@
+{
+  "name": "dk1-price-scheduler",
+  "version": "1.0.0",
+  "description": "Daily DK1 electricity price alert emailer",
+  "main": "scheduler.js",
+  "scripts": {
+    "start": "node scheduler.js",
+    "test-email": "node scheduler.js --test"
+  },
+  "dependencies": {
+    "node-cron": "^3.0.3",
+    "nodemailer": "^6.9.9",
+    "node-fetch": "^3.3.2"
+  }
+}
