@@ -33,13 +33,16 @@ const AREA      = "DK1";
 
 // ─── SMTP transporter ────────────────────────────────────────────────────────
 const transporter = nodemailer.createTransport({
-  host:   process.env.SMTP_HOST || "smtp.gmail.com",
+  host:   process.env.SMTP_HOST || "smtp.office365.com",
   port:   parseInt(process.env.SMTP_PORT || "587"),
   secure: false,
   auth: {
     user: process.env.SMTP_USER,
     pass: process.env.SMTP_PASS,
   },
+  tls: {
+    ciphers: 'SSLv3'
+  }
 });
 
 // ─── Fetch prices ─────────────────────────────────────────────────────────────
@@ -67,12 +70,16 @@ async function fetchPrices() {
 }
 
 // ─── Build email ──────────────────────────────────────────────────────────────
-function buildEmail(hours, today) {
+function buildEmail(hours, today, recipient) {
   const fmt    = (h) => `${String(h).padStart(2, "0")}:00`;
   const below  = hours.filter((h) => h.price < THRESHOLD);
   const avg    = hours.reduce((s, h) => s + h.price, 0) / hours.length;
   const minH   = hours.reduce((a, b) => (a.price < b.price ? a : b));
   const maxH   = hours.reduce((a, b) => (a.price > b.price ? a : b));
+
+  // Extract first name from email (name.surname@... → "Name")
+  const namePart = (recipient || TO_EMAIL).split('@')[0].split('.')[0];
+  const firstName = namePart.charAt(0).toUpperCase() + namePart.slice(1);
 
   const date   = new Date(today);
   const dateStr = date.toLocaleDateString("en-DK", {
@@ -99,7 +106,7 @@ function buildEmail(hours, today) {
   if (below.length === 0) {
     return {
       subject: `DK1 Prices – No hours below 30.92 DKK/MWh today (${today})`,
-      text: `Dear Fabio,
+      text: `Dear ${firstName},
 
 This is your daily DK1 electricity price report for ${dateStr}.
 
@@ -107,7 +114,7 @@ This is your daily DK1 electricity price report for ${dateStr}.
 SUMMARY
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-No hours today are priced below the threshold of 30.92 DKK/MWh.
+No hours today are priced below the threshold of ${THRESHOLD} DKK/MWh.
 
 DAILY STATISTICS
   • Day average:   ${avg.toFixed(2)} DKK/MWh
@@ -151,7 +158,7 @@ Generated: ${new Date().toLocaleString("en-DK")}
 
   return {
     subject: `⚡ DK1 Alert – ${below.length} hour${below.length > 1 ? "s" : ""} below 30.92 DKK/MWh today (${today})`,
-    text: `Dear Fabio,
+    text: `Dear ${firstName},
 
 This is your daily DK1 electricity price report for ${dateStr}.
 
@@ -159,7 +166,7 @@ This is your daily DK1 electricity price report for ${dateStr}.
 ⚡ ALERT: ${below.length} HOUR${below.length > 1 ? "S" : ""} BELOW THRESHOLD
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Today's DK1 spot prices are below 30.92 DKK/MWh during the following window${windows.length > 1 ? "s" : ""}:
+Today's DK1 spot prices are below ${THRESHOLD} DKK/MWh during the following window${windows.length > 1 ? "s" : ""}:
 
 ${windowSummary}
 
@@ -199,17 +206,20 @@ async function sendDailyAlert() {
 
   const today = new Date().toISOString().slice(0, 10);
   const hours = await fetchPrices();
-  const { subject, text } = buildEmail(hours, today);
 
-  const info = await transporter.sendMail({
-    from:    `"DK1 Price Monitor" <${process.env.SMTP_USER}>`,
-    to:      TO_EMAIL,
-    subject,
-    text,
-  });
+  // Split recipients and send individually (privacy + personalization)
+  const recipients = TO_EMAIL.split(',').map(e => e.trim()).filter(Boolean);
 
-  console.log(`[${new Date().toISOString()}] ✓ Email sent — ${info.messageId}`);
-  console.log(`    Subject: ${subject}`);
+  for (const recipient of recipients) {
+    const { subject, text } = buildEmail(hours, today, recipient);
+    const info = await transporter.sendMail({
+      from: `"DK1 Price Monitor" <${process.env.SMTP_USER}>`,
+      to:   recipient,
+      subject,
+      text,
+    });
+    console.log(`[${new Date().toISOString()}] ✓ Sent to ${recipient} — ${info.messageId}`);
+  }
 }
 
 // ─── Entry point ──────────────────────────────────────────────────────────────
