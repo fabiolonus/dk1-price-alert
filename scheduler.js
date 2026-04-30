@@ -171,7 +171,7 @@ Generated: ${new Date().toLocaleString("en-DK")}
 This is your daily DK1 electricity price report for ${dateStr}.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⚡ ALERT: ${below.length} SLOTS (${belowHours}h) BELOW THRESHOLD
+⚡ ALERT: ${below.length} SLOTS (${belowHours}h) BELOW THRESHOLD 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Today's DK1 spot prices are below ${THRESHOLD} DKK/MWh during the following window${windows.length > 1 ? "s" : ""}:
