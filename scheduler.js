@@ -65,17 +65,29 @@ async function fetchPrices() {
 
   return records.map((r) => {
     const h = new Date(r.TimeDK || r.HourDK || r.HourUTC);
-    return { hour: h.getHours(), price: parseFloat(r.DayAheadPriceDKK ?? r.SpotPriceDKK) };
+    const hh = h.getHours();
+    const mm = h.getMinutes();
+    const endMin = mm + 15;
+    const endHH = endMin >= 60 ? hh + 1 : hh;
+    const endMM = endMin >= 60 ? endMin - 60 : endMin;
+    const pad = n => String(n).padStart(2, '0');
+    return {
+      hour: hh,
+      minute: mm,
+      label: `${pad(hh)}:${pad(mm)}`,
+      endLabel: `${pad(endHH)}:${pad(endMM)}`,
+      price: parseFloat(r.DayAheadPriceDKK ?? r.SpotPriceDKK)
+    };
   });
 }
 
 // ─── Build email ──────────────────────────────────────────────────────────────
-function buildEmail(hours, today, recipient) {
-  const fmt    = (h) => `${String(h).padStart(2, "0")}:00`;
-  const below  = hours.filter((h) => h.price < THRESHOLD);
-  const avg    = hours.reduce((s, h) => s + h.price, 0) / hours.length;
-  const minH   = hours.reduce((a, b) => (a.price < b.price ? a : b));
-  const maxH   = hours.reduce((a, b) => (a.price > b.price ? a : b));
+function buildEmail(slots, today, recipient) {
+  const below  = slots.filter((s) => s.price < THRESHOLD);
+  const avg    = slots.reduce((s, h) => s + h.price, 0) / slots.length;
+  const minH   = slots.reduce((a, b) => (a.price < b.price ? a : b));
+  const maxH   = slots.reduce((a, b) => (a.price > b.price ? a : b));
+  const belowHours = (below.length * 15 / 60).toFixed(1);
 
   // Extract first name from email (name.surname@... → "Name")
   const namePart = (recipient || TO_EMAIL).split('@')[0].split('.')[0];
@@ -86,18 +98,18 @@ function buildEmail(hours, today, recipient) {
     weekday: "long", year: "numeric", month: "long", day: "numeric",
   });
 
-  // Group consecutive below-threshold hours into windows
+  // Group consecutive 15-min slots into windows
   const windows = [];
   let wStart = null;
-  below.forEach((h, i) => {
-    if (!wStart) wStart = h;
+  below.forEach((s, i) => {
+    if (!wStart) wStart = s;
     const next = below[i + 1];
-    if (!next || next.hour !== h.hour + 1) {
-      windows.push({
-        start:  wStart.hour,
-        end:    h.hour + 1,
-        prices: below.slice(below.indexOf(wStart), i + 1),
-      });
+    const consecutive = next && (
+      (next.hour === s.hour && next.minute === s.minute + 15) ||
+      (next.hour === s.hour + 1 && s.minute === 45 && next.minute === 0)
+    );
+    if (!consecutive) {
+      windows.push({ startLabel: wStart.label, endLabel: s.endLabel, prices: below.slice(below.indexOf(wStart), i + 1) });
       wStart = null;
     }
   });
@@ -105,7 +117,7 @@ function buildEmail(hours, today, recipient) {
   // ── No hours below threshold ──────────────────────────────────────────────
   if (below.length === 0) {
     return {
-      subject: `DK1 Prices – No hours below 30.92 DKK/MWh today (${today})`,
+      subject: `DK1 Prices – No slots below ${THRESHOLD} DKK/MWh today (${today})`,
       text: `Dear ${firstName},
 
 This is your daily DK1 electricity price report for ${dateStr}.
@@ -114,17 +126,17 @@ This is your daily DK1 electricity price report for ${dateStr}.
 SUMMARY
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-No hours today are priced below the threshold of ${THRESHOLD} DKK/MWh.
+No 15-minute slots today are priced below the threshold of ${THRESHOLD} DKK/MWh.
 
 DAILY STATISTICS
   • Day average:   ${avg.toFixed(2)} DKK/MWh
-  • Minimum price: ${minH.price.toFixed(2)} DKK/MWh  (${fmt(minH.hour)}–${fmt(minH.hour + 1)})
-  • Maximum price: ${maxH.price.toFixed(2)} DKK/MWh  (${fmt(maxH.hour)}–${fmt(maxH.hour + 1)})
-  • Threshold:     30.92 DKK/MWh
+  • Minimum price: ${minH.price.toFixed(2)} DKK/MWh  (${minH.label}–${minH.endLabel})
+  • Maximum price: ${maxH.price.toFixed(2)} DKK/MWh  (${maxH.label}–${maxH.endLabel})
+  • Threshold:     ${THRESHOLD} DKK/MWh
 
 ANALYSIS
-Prices for DK1 on ${dateStr} remain elevated across all 24 hours.
-The cheapest hour (${fmt(minH.hour)}–${fmt(minH.hour + 1)}) at ${minH.price.toFixed(2)} DKK/MWh is still ${(minH.price - THRESHOLD).toFixed(2)} DKK/MWh above the alert threshold.
+Prices for DK1 on ${dateStr} remain elevated across all 96 quarter-hour slots.
+The cheapest slot (${minH.label}–${minH.endLabel}) at ${minH.price.toFixed(2)} DKK/MWh is still ${(minH.price - THRESHOLD).toFixed(2)} DKK/MWh above the alert threshold.
 
 No action recommended today based on the price threshold criteria.
 
@@ -142,56 +154,48 @@ Generated: ${new Date().toLocaleString("en-DK")}
   const windowSummary = windows
     .map((w) => {
       const wAvg = w.prices.reduce((s, h) => s + h.price, 0) / w.prices.length;
-      return `  • ${fmt(w.start)} – ${fmt(w.end)}  (${w.end - w.start}h, avg ${wAvg.toFixed(2)} DKK/MWh)`;
+      return `  • ${w.startLabel} – ${w.endLabel}  (${w.prices.length * 15} min, avg ${wAvg.toFixed(2)} DKK/MWh)`;
     })
     .join("\n");
 
-  const hourLines = below
-    .map(
-      (h) =>
-        `  ${fmt(h.hour)}–${fmt(h.hour + 1)}    ${h.price.toFixed(2)} DKK/MWh` +
-        `    (${(THRESHOLD - h.price).toFixed(2)} below threshold)`
-    )
+  const slotLines = below
+    .map((s) => `  ${s.label}–${s.endLabel}    ${s.price.toFixed(2)} DKK/MWh    (${(THRESHOLD - s.price).toFixed(2)} below threshold)`)
     .join("\n");
 
-  const windowList = windows.map((w) => `${fmt(w.start)}–${fmt(w.end)}`).join(" and ");
+  const windowList = windows.map((w) => `${w.startLabel}–${w.endLabel}`).join(" and ");
 
   return {
-    subject: `⚡ DK1 Alert – ${below.length} hour${below.length > 1 ? "s" : ""} below 30.92 DKK/MWh today (${today})`,
+    subject: `⚡ DK1 Alert – ${belowHours}h below ${THRESHOLD} DKK/MWh today (${today})`,
     text: `Dear ${firstName},
 
 This is your daily DK1 electricity price report for ${dateStr}.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⚡ ALERT: ${below.length} HOUR${below.length > 1 ? "S" : ""} BELOW THRESHOLD
+⚡ ALERT: ${below.length} SLOTS (${belowHours}h) BELOW THRESHOLD
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Today's DK1 spot prices are below ${THRESHOLD} DKK/MWh during the following window${windows.length > 1 ? "s" : ""}:
 
 ${windowSummary}
 
-HOUR-BY-HOUR DETAIL
-${hourLines}
+SLOT-BY-SLOT DETAIL
+${slotLines}
 
 DAILY STATISTICS
-  • Below-threshold hours: ${below.length}/24
-  • Avg price (below hrs): ${belowAvg.toFixed(2)} DKK/MWh  (${saving} DKK/MWh below threshold)
-  • Day average (all hrs): ${avg.toFixed(2)} DKK/MWh
-  • Minimum price:         ${minH.price.toFixed(2)} DKK/MWh  (${fmt(minH.hour)}–${fmt(minH.hour + 1)})
-  • Maximum price:         ${maxH.price.toFixed(2)} DKK/MWh  (${fmt(maxH.hour)}–${fmt(maxH.hour + 1)})
-  • Threshold:             30.92 DKK/MWh
+  • Below-threshold slots: ${below.length}/96  (${belowHours}h)
+  • Avg price (below):     ${belowAvg.toFixed(2)} DKK/MWh  (${saving} DKK/MWh below threshold)
+  • Day average (all):     ${avg.toFixed(2)} DKK/MWh
+  • Minimum price:         ${minH.price.toFixed(2)} DKK/MWh  (${minH.label}–${minH.endLabel})
+  • Maximum price:         ${maxH.price.toFixed(2)} DKK/MWh  (${maxH.label}–${maxH.endLabel})
+  • Threshold:             ${THRESHOLD} DKK/MWh
 
 ANALYSIS
-On ${dateStr}, the DK1 area offers ${below.length} hour${below.length > 1 ? "s" : ""} of sub-threshold pricing.
+On ${dateStr}, the DK1 area offers ${belowHours} hours of sub-threshold pricing across ${below.length} quarter-hour slots.
 ${
   windows.length === 1
-    ? `The opportunity is concentrated in a single block (${fmt(windows[0].start)}–${fmt(windows[0].end)}), making it well-suited for continuous consumption scheduling.`
-    : `The below-threshold hours are spread across ${windows.length} separate windows. Consider whether partial or split scheduling is feasible for your operations.`
+    ? `Expect the disconnection of the plant during ${windows[0].startLabel}–${windows[0].endLabel} due to low electricity prices.`
+    : `Expect the disconnection of the plant during ${windows.length} separate windows due to low electricity prices:\n${windows.map(w => `  ${w.startLabel}–${w.endLabel}`).join('\n')}`
 }
-The average saving during the cheap window${windows.length > 1 ? "s" : ""} is ${saving} DKK/MWh vs. threshold.
-The daily average of ${avg.toFixed(2)} DKK/MWh is ${avg < THRESHOLD ? `${(THRESHOLD - avg).toFixed(2)} DKK/MWh below` : `${(avg - THRESHOLD).toFixed(2)} DKK/MWh above`} threshold.
-
-Recommendation: Schedule flexible loads during ${windowList} to take advantage of the price dip.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Data source: Energi Data Service – DayAheadPrices
