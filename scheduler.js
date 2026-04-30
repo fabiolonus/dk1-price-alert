@@ -209,10 +209,16 @@ async function sendDailyAlert() {
   console.log(`[${new Date().toISOString()}] Running daily price check…`);
 
   const today = new Date().toISOString().slice(0, 10);
-  const hours = await fetchPrices();
 
   // Split recipients and send individually (privacy + personalization)
   const recipients = TO_EMAIL.split(',').map(e => e.trim()).filter(Boolean);
+  const hours = await fetchPrices();
+  const below = hours.filter(h => h.price < THRESHOLD);
+
+  if (below.length === 0) {
+    console.log(`[${new Date().toISOString()}] No slots below ${THRESHOLD} DKK/MWh today — no email sent.`);
+    return;
+  }
 
   for (const recipient of recipients) {
     const { subject, text } = buildEmail(hours, today, recipient);
