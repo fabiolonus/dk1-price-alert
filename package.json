@@ -1,6 +1,7 @@
 {
   "name": "dk1-price-scheduler",
   "version": "1.0.0",
+  "type": "module",
   "description": "Daily DK1 electricity price alert emailer",
   "main": "scheduler.js",
   "scripts": {
