@@ -1,8 +1,6 @@
 name: DK1 Daily Price Alert
 
 on:
-  schedule:
-    - cron: '0 6 * * *'
   workflow_dispatch:
   repository_dispatch:
     types: [dk1-alert]
