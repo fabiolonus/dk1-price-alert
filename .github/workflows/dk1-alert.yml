@@ -16,15 +16,7 @@ jobs:
         with:
           node-version: '22'
       - run: npm install
-      - run: node scheduler.js --test
-        env:
-          SMTP_HOST: ${{ secrets.SMTP_HOST }}
-          SMTP_PORT: ${{ secrets.SMTP_PORT }}
-          SMTP_USER: ${{ secrets.SMTP_USER }}
-          SMTP_PASS: ${{ secrets.SMTP_PASS }}
-          TO_EMAIL: ${{ vars.TO_EMAIL }}
-          THRESHOLD: ${{ vars.THRESHOLD }}
-      - name: Send DK1 price alert
+      - name: Run price check and send alert
         env:
           SMTP_HOST: ${{ secrets.SMTP_HOST }}
           SMTP_PORT: ${{ secrets.SMTP_PORT }}
@@ -32,4 +24,4 @@ jobs:
           SMTP_PASS: ${{ secrets.SMTP_PASS }}
           TO_EMAIL:  ${{ vars.TO_EMAIL }}
           THRESHOLD: ${{ vars.THRESHOLD }}
-        run: node scheduler.js --test && echo "✓ Scheduler completed at $(date -u)"
+        run: node scheduler.js --test
