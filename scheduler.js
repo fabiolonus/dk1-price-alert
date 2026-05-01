@@ -223,7 +223,7 @@ async function sendDailyAlert() {
   for (const recipient of recipients) {
     const { subject, text } = buildEmail(hours, today, recipient);
     const info = await transporter.sendMail({
-      from: `"DK1 Price Monitor" <fabio.barboni@stern-energy.com>`,
+      from: `"DK1 Price Monitor" <${process.env.SMTP_USER}>`,
       to:   recipient,
       subject,
       text,
