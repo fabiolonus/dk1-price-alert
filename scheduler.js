@@ -89,7 +89,7 @@ function buildEmail(slots, today, recipient) {
   const maxH   = slots.reduce((a, b) => (a.price > b.price ? a : b));
   const belowHours = (below.length * 15 / 60).toFixed(1);
 
-  // Extract first name from email (name.surname@... → "Name")
+  // Extract first name  email (name.surname@... → "Name")
   const namePart = (recipient || TO_EMAIL).split('@')[0].split('.')[0];
   const firstName = namePart.charAt(0).toUpperCase() + namePart.slice(1);
 
@@ -223,7 +223,7 @@ async function sendDailyAlert() {
   for (const recipient of recipients) {
     const { subject, text } = buildEmail(hours, today, recipient);
     const info = await transporter.sendMail({
-      from: `"DK1 Price Monitor" <${process.env.SMTP_USER}>`,
+      from: `"DK1 Price Monitor" <fabio.barboni@stern-energy.com>`,
       to:   recipient,
       subject,
       text,
