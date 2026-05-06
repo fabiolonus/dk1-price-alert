@@ -1,5 +1,5 @@
 // DK1 Price Alert Scheduler
-// Runs daily at 08:00 — fetches day-ahead prices and emails if any hour < 30.92 DKK/MWh
+// Runs daily at 08:00 — fetches day-ahead prices and emails if any hour < 14.95 DKK/MWh
 //
 // Setup:
 //   1. cp .env.example .env  and fill in your SMTP credentials
@@ -27,7 +27,7 @@ try {
 }
 
 // ─── Config ──────────────────────────────────────────────────────────────────
-const THRESHOLD = parseFloat(process.env.THRESHOLD) || 30.92;  // override via GitHub Variable
+const THRESHOLD = parseFloat(process.env.THRESHOLD) || 14.95;  // override via GitHub Variable
 const TO_EMAIL  = process.env.TO_EMAIL || "fabio.barboni@stern-energy.com"; // override via GitHub Variable
 const AREA      = "DK1";
 
@@ -41,7 +41,7 @@ const transporter = nodemailer.createTransport({
     pass: process.env.SMTP_PASS,
   },
   tls: {
-    rejectUnauthorized: false
+    ciphers: 'SSLv3'
   }
 });
 
@@ -89,7 +89,7 @@ function buildEmail(slots, today, recipient) {
   const maxH   = slots.reduce((a, b) => (a.price > b.price ? a : b));
   const belowHours = (below.length * 15 / 60).toFixed(1);
 
-  // Extract first name  email (name.surname@... → "Name")
+  // Extract first name from email (name.surname@... → "Name")
   const namePart = (recipient || TO_EMAIL).split('@')[0].split('.')[0];
   const firstName = namePart.charAt(0).toUpperCase() + namePart.slice(1);
 
@@ -168,34 +168,18 @@ Generated: ${new Date().toLocaleString("en-DK")}
     subject: `⚡ DK1 Alert – ${belowHours}h below ${THRESHOLD} DKK/MWh today (${today})`,
     text: `Dear ${firstName},
 
-This is your daily DK1 electricity price report for ${dateStr}.
-
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⚡ ALERT: ${below.length} SLOTS (${belowHours}h) BELOW THRESHOLD 
+⚡ ALERT: ${below.length} SLOTS (${belowHours}h) BELOW THRESHOLD
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Today's DK1 spot prices are below ${THRESHOLD} DKK/MWh during the following window${windows.length > 1 ? "s" : ""}:
 
 ${windowSummary}
 
-SLOT-BY-SLOT DETAIL
-${slotLines}
-
-DAILY STATISTICS
-  • Below-threshold slots: ${below.length}/96  (${belowHours}h)
-  • Avg price (below):     ${belowAvg.toFixed(2)} DKK/MWh  (${saving} DKK/MWh below threshold)
-  • Day average (all):     ${avg.toFixed(2)} DKK/MWh
-  • Minimum price:         ${minH.price.toFixed(2)} DKK/MWh  (${minH.label}–${minH.endLabel})
-  • Maximum price:         ${maxH.price.toFixed(2)} DKK/MWh  (${maxH.label}–${maxH.endLabel})
-  • Threshold:             ${THRESHOLD} DKK/MWh
-
 ANALYSIS
 On ${dateStr}, the DK1 area offers ${belowHours} hours of sub-threshold pricing across ${below.length} quarter-hour slots.
-${
-  windows.length === 1
-    ? `Expect the disconnection of the plant during ${windows[0].startLabel}–${windows[0].endLabel} due to low electricity prices.`
-    : `Expect the disconnection of the plant during ${windows.length} separate windows due to low electricity prices:\n${windows.map(w => `  ${w.startLabel}–${w.endLabel}`).join('\n')}`
-}
+Expect the disconnection of the plant due to low electricity prices in the following time window${windows.length > 1 ? "s" : ""}:
+${windows.map(w => `  ${w.startLabel}–${w.endLabel}`).join('\n')}
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Data source: Energi Data Service – DayAheadPrices
