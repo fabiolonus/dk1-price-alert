@@ -1,25 +1,53 @@
 name: DK1 Daily Price Alert
 
 on:
+  schedule:
+    - cron: '0 6 * * *'
+    - cron: '0 12 * * *'
   workflow_dispatch:
-  repository_dispatch:
-    types: [dk1-alert]
+
+permissions:
+  contents: write
 
 jobs:
   send-alert:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+
       - run: npm install
-      - name: Run price check and send alert
+
+      - name: Fetch and save prices JSON
+        run: |
+          node -e "
+          const today = new Date().toISOString().slice(0,10);
+          const tomorrow = new Date(Date.now()+86400000).toISOString().slice(0,10);
+          const url = 'https://api.energidataservice.dk/dataset/DayAheadPrices?start='+today+'&end='+tomorrow+'&filter='+encodeURIComponent('{\"PriceArea\":[\"DK1\"]}')+'&sort=TimeDK%20ASC&limit=0';
+          fetch(url).then(r => r.json()).then(d => {
+            const out = { date: today, fetchedAt: new Date().toISOString(), records: d.records || [] };
+            require('fs').writeFileSync('latest.json', JSON.stringify(out, null, 2));
+            console.log('Wrote latest.json with', out.records.length, 'records');
+          }).catch(e => { console.error('Fetch failed:', e); process.exit(1); });
+          "
+
+      - name: Send DK1 price alert
         env:
           SMTP_HOST: ${{ secrets.SMTP_HOST }}
           SMTP_PORT: ${{ secrets.SMTP_PORT }}
           SMTP_USER: ${{ secrets.SMTP_USER }}
           SMTP_PASS: ${{ secrets.SMTP_PASS }}
-          TO_EMAIL:  ${{ vars.TO_EMAIL }}
+          TO_EMAIL: ${{ vars.TO_EMAIL }}
           THRESHOLD: ${{ vars.THRESHOLD }}
         run: node scheduler.js --test
+
+      - name: Commit latest.json
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add latest.json
+          git diff --staged --quiet || git commit -m "Update DK1 prices [skip ci]"
+          git push
