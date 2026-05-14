@@ -212,7 +212,7 @@ async function sendDailyAlert() {
       subject,
       text,
     });
-    console.log(`[${new Date().toISOString()}] ✓ Sent to ${recipient} — ${info.messageId}`);
+    console.log(`[${new Date().toISOString()}] ✓ Sent to ${recipient.replace(/^(.).*@(.{2}).*$/, '$1***@$2***')} — ${info.messageId}`);
   }
 }
 
