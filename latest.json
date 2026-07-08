@@ -1,678 +1,678 @@
 {
   "date": "2026-07-08",
-  "fetchedAt": "2026-07-08T08:24:29.116Z",
+  "fetchedAt": "2026-07-08T14:27:53.702Z",
   "records": [
     {
       "TimeUTC": "2026-07-07T22:00:00",
       "TimeDK": "2026-07-08T00:00:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 96.190002,
-      "DayAheadPriceDKK": 719.001027
+      "DayAheadPriceDKK": 718.981789
     },
     {
       "TimeUTC": "2026-07-07T22:15:00",
       "TimeDK": "2026-07-08T00:15:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 100.599998,
-      "DayAheadPriceDKK": 751.964865
+      "DayAheadPriceDKK": 751.944745
     },
     {
       "TimeUTC": "2026-07-07T22:30:00",
       "TimeDK": "2026-07-08T00:30:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 102.629997,
-      "DayAheadPriceDKK": 767.138702
+      "DayAheadPriceDKK": 767.118176
     },
     {
       "TimeUTC": "2026-07-07T22:45:00",
       "TimeDK": "2026-07-08T00:45:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 102.889999,
-      "DayAheadPriceDKK": 769.082165
+      "DayAheadPriceDKK": 769.061587
     },
     {
       "TimeUTC": "2026-07-07T23:00:00",
       "TimeDK": "2026-07-08T01:00:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 98.690002,
-      "DayAheadPriceDKK": 737.688027
+      "DayAheadPriceDKK": 737.668289
     },
     {
       "TimeUTC": "2026-07-07T23:15:00",
       "TimeDK": "2026-07-08T01:15:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 99.480003,
-      "DayAheadPriceDKK": 743.593126
+      "DayAheadPriceDKK": 743.57323
     },
     {
       "TimeUTC": "2026-07-07T23:30:00",
       "TimeDK": "2026-07-08T01:30:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 97.959999,
-      "DayAheadPriceDKK": 732.231401
+      "DayAheadPriceDKK": 732.211809
     },
     {
       "TimeUTC": "2026-07-07T23:45:00",
       "TimeDK": "2026-07-08T01:45:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 103.879997,
-      "DayAheadPriceDKK": 776.482202
+      "DayAheadPriceDKK": 776.461426
     },
     {
       "TimeUTC": "2026-07-08T00:00:00",
       "TimeDK": "2026-07-08T02:00:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 98.5,
-      "DayAheadPriceDKK": 736.2678
+      "DayAheadPriceDKK": 736.2481
     },
     {
       "TimeUTC": "2026-07-08T00:15:00",
       "TimeDK": "2026-07-08T02:15:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 99.470001,
-      "DayAheadPriceDKK": 743.518363
+      "DayAheadPriceDKK": 743.498469
     },
     {
       "TimeUTC": "2026-07-08T00:30:00",
       "TimeDK": "2026-07-08T02:30:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 99.68,
-      "DayAheadPriceDKK": 745.088064
+      "DayAheadPriceDKK": 745.068128
     },
     {
       "TimeUTC": "2026-07-08T00:45:00",
       "TimeDK": "2026-07-08T02:45:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 102.349998,
-      "DayAheadPriceDKK": 765.045765
+      "DayAheadPriceDKK": 765.025295
     },
     {
       "TimeUTC": "2026-07-08T01:00:00",
       "TimeDK": "2026-07-08T03:00:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 102.699997,
-      "DayAheadPriceDKK": 767.661938
+      "DayAheadPriceDKK": 767.641398
     },
     {
       "TimeUTC": "2026-07-08T01:15:00",
       "TimeDK": "2026-07-08T03:15:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 102.199997,
-      "DayAheadPriceDKK": 763.924538
+      "DayAheadPriceDKK": 763.904098
     },
     {
       "TimeUTC": "2026-07-08T01:30:00",
       "TimeDK": "2026-07-08T03:30:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 101.080002,
-      "DayAheadPriceDKK": 755.552799
+      "DayAheadPriceDKK": 755.532583
     },
     {
       "TimeUTC": "2026-07-08T01:45:00",
       "TimeDK": "2026-07-08T03:45:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 106.029999,
-      "DayAheadPriceDKK": 792.553037
+      "DayAheadPriceDKK": 792.531831
     },
     {
       "TimeUTC": "2026-07-08T02:00:00",
       "TimeDK": "2026-07-08T04:00:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 107.43,
-      "DayAheadPriceDKK": 803.017764
+      "DayAheadPriceDKK": 802.996278
     },
     {
       "TimeUTC": "2026-07-08T02:15:00",
       "TimeDK": "2026-07-08T04:15:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 107.279999,
-      "DayAheadPriceDKK": 801.896537
+      "DayAheadPriceDKK": 801.875081
     },
     {
       "TimeUTC": "2026-07-08T02:30:00",
       "TimeDK": "2026-07-08T04:30:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 108.389999,
-      "DayAheadPriceDKK": 810.193565
+      "DayAheadPriceDKK": 810.171887
     },
     {
       "TimeUTC": "2026-07-08T02:45:00",
       "TimeDK": "2026-07-08T04:45:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 104.900002,
-      "DayAheadPriceDKK": 784.106535
+      "DayAheadPriceDKK": 784.085555
     },
     {
       "TimeUTC": "2026-07-08T03:00:00",
       "TimeDK": "2026-07-08T05:00:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 104.760002,
-      "DayAheadPriceDKK": 783.060063
+      "DayAheadPriceDKK": 783.039111
     },
     {
       "TimeUTC": "2026-07-08T03:15:00",
       "TimeDK": "2026-07-08T05:15:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 109.440002,
-      "DayAheadPriceDKK": 818.042127
+      "DayAheadPriceDKK": 818.020239
     },
     {
       "TimeUTC": "2026-07-08T03:30:00",
       "TimeDK": "2026-07-08T05:30:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 105.470001,
-      "DayAheadPriceDKK": 788.367163
+      "DayAheadPriceDKK": 788.346069
     },
     {
       "TimeUTC": "2026-07-08T03:45:00",
       "TimeDK": "2026-07-08T05:45:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 99.639999,
-      "DayAheadPriceDKK": 744.789065
+      "DayAheadPriceDKK": 744.769137
     },
     {
       "TimeUTC": "2026-07-08T04:00:00",
       "TimeDK": "2026-07-08T06:00:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 117.589996,
-      "DayAheadPriceDKK": 878.961702
+      "DayAheadPriceDKK": 878.938184
     },
     {
       "TimeUTC": "2026-07-08T04:15:00",
       "TimeDK": "2026-07-08T06:15:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 113.330002,
-      "DayAheadPriceDKK": 847.119099
+      "DayAheadPriceDKK": 847.096433
     },
     {
       "TimeUTC": "2026-07-08T04:30:00",
       "TimeDK": "2026-07-08T06:30:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 111.639999,
-      "DayAheadPriceDKK": 834.486665
+      "DayAheadPriceDKK": 834.464337
     },
     {
       "TimeUTC": "2026-07-08T04:45:00",
       "TimeDK": "2026-07-08T06:45:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 95.830002,
-      "DayAheadPriceDKK": 716.310099
+      "DayAheadPriceDKK": 716.290933
     },
     {
       "TimeUTC": "2026-07-08T05:00:00",
       "TimeDK": "2026-07-08T07:00:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 116.010002,
-      "DayAheadPriceDKK": 867.151563
+      "DayAheadPriceDKK": 867.128361
     },
     {
       "TimeUTC": "2026-07-08T05:15:00",
       "TimeDK": "2026-07-08T07:15:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 116.18,
-      "DayAheadPriceDKK": 868.422264
+      "DayAheadPriceDKK": 868.399028
     },
     {
       "TimeUTC": "2026-07-08T05:30:00",
       "TimeDK": "2026-07-08T07:30:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 106.580002,
-      "DayAheadPriceDKK": 796.664199
+      "DayAheadPriceDKK": 796.642883
     },
     {
       "TimeUTC": "2026-07-08T05:45:00",
       "TimeDK": "2026-07-08T07:45:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 103.470001,
-      "DayAheadPriceDKK": 773.417563
+      "DayAheadPriceDKK": 773.396869
     },
     {
       "TimeUTC": "2026-07-08T06:00:00",
       "TimeDK": "2026-07-08T08:00:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 109.919998,
-      "DayAheadPriceDKK": 821.630001
+      "DayAheadPriceDKK": 821.608017
     },
     {
       "TimeUTC": "2026-07-08T06:15:00",
       "TimeDK": "2026-07-08T08:15:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 103.25,
-      "DayAheadPriceDKK": 771.7731
+      "DayAheadPriceDKK": 771.75245
     },
     {
       "TimeUTC": "2026-07-08T06:30:00",
       "TimeDK": "2026-07-08T08:30:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 93.860001,
-      "DayAheadPriceDKK": 701.584735
+      "DayAheadPriceDKK": 701.565963
     },
     {
       "TimeUTC": "2026-07-08T06:45:00",
       "TimeDK": "2026-07-08T08:45:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 85.019997,
-      "DayAheadPriceDKK": 635.507474
+      "DayAheadPriceDKK": 635.49047
     },
     {
       "TimeUTC": "2026-07-08T07:00:00",
       "TimeDK": "2026-07-08T09:00:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 101.349998,
-      "DayAheadPriceDKK": 757.570965
+      "DayAheadPriceDKK": 757.550695
     },
     {
       "TimeUTC": "2026-07-08T07:15:00",
       "TimeDK": "2026-07-08T09:15:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 84.279999,
-      "DayAheadPriceDKK": 629.976137
+      "DayAheadPriceDKK": 629.959281
     },
     {
       "TimeUTC": "2026-07-08T07:30:00",
       "TimeDK": "2026-07-08T09:30:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 75.339996,
-      "DayAheadPriceDKK": 563.151402
+      "DayAheadPriceDKK": 563.136334
     },
     {
       "TimeUTC": "2026-07-08T07:45:00",
       "TimeDK": "2026-07-08T09:45:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 59.02,
-      "DayAheadPriceDKK": 441.162696
+      "DayAheadPriceDKK": 441.150892
     },
     {
       "TimeUTC": "2026-07-08T08:00:00",
       "TimeDK": "2026-07-08T10:00:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 80.959999,
-      "DayAheadPriceDKK": 605.159801
+      "DayAheadPriceDKK": 605.143609
     },
     {
       "TimeUTC": "2026-07-08T08:15:00",
       "TimeDK": "2026-07-08T10:15:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 74.540001,
-      "DayAheadPriceDKK": 557.171599
+      "DayAheadPriceDKK": 557.156691
     },
     {
       "TimeUTC": "2026-07-08T08:30:00",
       "TimeDK": "2026-07-08T10:30:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 75.43,
-      "DayAheadPriceDKK": 563.824164
+      "DayAheadPriceDKK": 563.809078
     },
     {
       "TimeUTC": "2026-07-08T08:45:00",
       "TimeDK": "2026-07-08T10:45:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 67.610001,
-      "DayAheadPriceDKK": 505.371235
+      "DayAheadPriceDKK": 505.357713
     },
     {
       "TimeUTC": "2026-07-08T09:00:00",
       "TimeDK": "2026-07-08T11:00:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 80.720001,
-      "DayAheadPriceDKK": 603.365863
+      "DayAheadPriceDKK": 603.349719
     },
     {
       "TimeUTC": "2026-07-08T09:15:00",
       "TimeDK": "2026-07-08T11:15:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 71.010002,
-      "DayAheadPriceDKK": 530.785563
+      "DayAheadPriceDKK": 530.771361
     },
     {
       "TimeUTC": "2026-07-08T09:30:00",
       "TimeDK": "2026-07-08T11:30:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 67.809998,
-      "DayAheadPriceDKK": 506.866173
+      "DayAheadPriceDKK": 506.852611
     },
     {
       "TimeUTC": "2026-07-08T09:45:00",
       "TimeDK": "2026-07-08T11:45:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 52.849998,
-      "DayAheadPriceDKK": 395.043165
+      "DayAheadPriceDKK": 395.032595
     },
     {
       "TimeUTC": "2026-07-08T10:00:00",
       "TimeDK": "2026-07-08T12:00:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 54.259998,
-      "DayAheadPriceDKK": 405.582633
+      "DayAheadPriceDKK": 405.571781
     },
     {
       "TimeUTC": "2026-07-08T10:15:00",
       "TimeDK": "2026-07-08T12:15:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 55.41,
-      "DayAheadPriceDKK": 414.178668
+      "DayAheadPriceDKK": 414.167586
     },
     {
       "TimeUTC": "2026-07-08T10:30:00",
       "TimeDK": "2026-07-08T12:30:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 46.18,
-      "DayAheadPriceDKK": 345.186264
+      "DayAheadPriceDKK": 345.177028
     },
     {
       "TimeUTC": "2026-07-08T10:45:00",
       "TimeDK": "2026-07-08T12:45:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 35.779999,
-      "DayAheadPriceDKK": 267.448337
+      "DayAheadPriceDKK": 267.441181
     },
     {
       "TimeUTC": "2026-07-08T11:00:00",
       "TimeDK": "2026-07-08T13:00:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 35.560001,
-      "DayAheadPriceDKK": 265.803895
+      "DayAheadPriceDKK": 265.796783
     },
     {
       "TimeUTC": "2026-07-08T11:15:00",
       "TimeDK": "2026-07-08T13:15:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 24.059999,
-      "DayAheadPriceDKK": 179.843681
+      "DayAheadPriceDKK": 179.838869
     },
     {
       "TimeUTC": "2026-07-08T11:30:00",
       "TimeDK": "2026-07-08T13:30:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 14.54,
-      "DayAheadPriceDKK": 108.683592
+      "DayAheadPriceDKK": 108.680684
     },
     {
       "TimeUTC": "2026-07-08T11:45:00",
       "TimeDK": "2026-07-08T13:45:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 12.32,
-      "DayAheadPriceDKK": 92.089536
+      "DayAheadPriceDKK": 92.087072
     },
     {
       "TimeUTC": "2026-07-08T12:00:00",
       "TimeDK": "2026-07-08T14:00:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 11.91,
-      "DayAheadPriceDKK": 89.024868
+      "DayAheadPriceDKK": 89.022486
     },
     {
       "TimeUTC": "2026-07-08T12:15:00",
       "TimeDK": "2026-07-08T14:15:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 13.11,
-      "DayAheadPriceDKK": 97.994628
+      "DayAheadPriceDKK": 97.992006
     },
     {
       "TimeUTC": "2026-07-08T12:30:00",
       "TimeDK": "2026-07-08T14:30:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 13.5,
-      "DayAheadPriceDKK": 100.9098
+      "DayAheadPriceDKK": 100.9071
     },
     {
       "TimeUTC": "2026-07-08T12:45:00",
       "TimeDK": "2026-07-08T14:45:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 12.33,
-      "DayAheadPriceDKK": 92.164284
+      "DayAheadPriceDKK": 92.161818
     },
     {
       "TimeUTC": "2026-07-08T13:00:00",
       "TimeDK": "2026-07-08T15:00:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 9.05,
-      "DayAheadPriceDKK": 67.64694
+      "DayAheadPriceDKK": 67.64513
     },
     {
       "TimeUTC": "2026-07-08T13:15:00",
       "TimeDK": "2026-07-08T15:15:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 9.14,
-      "DayAheadPriceDKK": 68.319672
+      "DayAheadPriceDKK": 68.317844
     },
     {
       "TimeUTC": "2026-07-08T13:30:00",
       "TimeDK": "2026-07-08T15:30:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 15.07,
-      "DayAheadPriceDKK": 112.645236
+      "DayAheadPriceDKK": 112.642222
     },
     {
       "TimeUTC": "2026-07-08T13:45:00",
       "TimeDK": "2026-07-08T15:45:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 23.91,
-      "DayAheadPriceDKK": 178.722468
+      "DayAheadPriceDKK": 178.717686
     },
     {
       "TimeUTC": "2026-07-08T14:00:00",
       "TimeDK": "2026-07-08T16:00:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 13.15,
-      "DayAheadPriceDKK": 98.29362
+      "DayAheadPriceDKK": 98.29099
     },
     {
       "TimeUTC": "2026-07-08T14:15:00",
       "TimeDK": "2026-07-08T16:15:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 20.889999,
-      "DayAheadPriceDKK": 156.148565
+      "DayAheadPriceDKK": 156.144387
     },
     {
       "TimeUTC": "2026-07-08T14:30:00",
       "TimeDK": "2026-07-08T16:30:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 52.529999,
-      "DayAheadPriceDKK": 392.651237
+      "DayAheadPriceDKK": 392.640731
     },
     {
       "TimeUTC": "2026-07-08T14:45:00",
       "TimeDK": "2026-07-08T16:45:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 72.620003,
-      "DayAheadPriceDKK": 542.819998
+      "DayAheadPriceDKK": 542.805474
     },
     {
       "TimeUTC": "2026-07-08T15:00:00",
       "TimeDK": "2026-07-08T17:00:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 61.150002,
-      "DayAheadPriceDKK": 457.084035
+      "DayAheadPriceDKK": 457.071805
     },
     {
       "TimeUTC": "2026-07-08T15:15:00",
       "TimeDK": "2026-07-08T17:15:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 80.139999,
-      "DayAheadPriceDKK": 599.030465
+      "DayAheadPriceDKK": 599.014437
     },
     {
       "TimeUTC": "2026-07-08T15:30:00",
       "TimeDK": "2026-07-08T17:30:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 83.199997,
-      "DayAheadPriceDKK": 621.903338
+      "DayAheadPriceDKK": 621.886698
     },
     {
       "TimeUTC": "2026-07-08T15:45:00",
       "TimeDK": "2026-07-08T17:45:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 87.739998,
-      "DayAheadPriceDKK": 655.838937
+      "DayAheadPriceDKK": 655.821389
     },
     {
       "TimeUTC": "2026-07-08T16:00:00",
       "TimeDK": "2026-07-08T18:00:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 79.360001,
-      "DayAheadPriceDKK": 593.200135
+      "DayAheadPriceDKK": 593.184263
     },
     {
       "TimeUTC": "2026-07-08T16:15:00",
       "TimeDK": "2026-07-08T18:15:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 88.010002,
-      "DayAheadPriceDKK": 657.857163
+      "DayAheadPriceDKK": 657.839561
     },
     {
       "TimeUTC": "2026-07-08T16:30:00",
       "TimeDK": "2026-07-08T18:30:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 110.269997,
-      "DayAheadPriceDKK": 824.246174
+      "DayAheadPriceDKK": 824.22412
     },
     {
       "TimeUTC": "2026-07-08T16:45:00",
       "TimeDK": "2026-07-08T18:45:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 107.93,
-      "DayAheadPriceDKK": 806.755164
+      "DayAheadPriceDKK": 806.733578
     },
     {
       "TimeUTC": "2026-07-08T17:00:00",
       "TimeDK": "2026-07-08T19:00:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 120.129997,
-      "DayAheadPriceDKK": 897.947702
+      "DayAheadPriceDKK": 897.923676
     },
     {
       "TimeUTC": "2026-07-08T17:15:00",
       "TimeDK": "2026-07-08T19:15:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 121.519997,
-      "DayAheadPriceDKK": 908.337674
+      "DayAheadPriceDKK": 908.31337
     },
     {
       "TimeUTC": "2026-07-08T17:30:00",
       "TimeDK": "2026-07-08T19:30:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 125.940002,
-      "DayAheadPriceDKK": 941.376327
+      "DayAheadPriceDKK": 941.351139
     },
     {
       "TimeUTC": "2026-07-08T17:45:00",
       "TimeDK": "2026-07-08T19:45:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 132.410004,
-      "DayAheadPriceDKK": 989.738298
+      "DayAheadPriceDKK": 989.711816
     },
     {
       "TimeUTC": "2026-07-08T18:00:00",
       "TimeDK": "2026-07-08T20:00:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 130.419998,
-      "DayAheadPriceDKK": 974.863401
+      "DayAheadPriceDKK": 974.837317
     },
     {
       "TimeUTC": "2026-07-08T18:15:00",
       "TimeDK": "2026-07-08T20:15:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 143.190002,
-      "DayAheadPriceDKK": 1070.316627
+      "DayAheadPriceDKK": 1070.287989
     },
     {
       "TimeUTC": "2026-07-08T18:30:00",
       "TimeDK": "2026-07-08T20:30:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 151.979996,
-      "DayAheadPriceDKK": 1136.020074
+      "DayAheadPriceDKK": 1135.989678
     },
     {
       "TimeUTC": "2026-07-08T18:45:00",
       "TimeDK": "2026-07-08T20:45:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 165.75,
-      "DayAheadPriceDKK": 1238.9481
+      "DayAheadPriceDKK": 1238.91495
     },
     {
       "TimeUTC": "2026-07-08T19:00:00",
       "TimeDK": "2026-07-08T21:00:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 158.220001,
-      "DayAheadPriceDKK": 1182.662863
+      "DayAheadPriceDKK": 1182.631219
     },
     {
       "TimeUTC": "2026-07-08T19:15:00",
       "TimeDK": "2026-07-08T21:15:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 160.979996,
-      "DayAheadPriceDKK": 1203.293274
+      "DayAheadPriceDKK": 1203.261078
     },
     {
       "TimeUTC": "2026-07-08T19:30:00",
       "TimeDK": "2026-07-08T21:30:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 163,
-      "DayAheadPriceDKK": 1218.3924
+      "DayAheadPriceDKK": 1218.3598
     },
     {
       "TimeUTC": "2026-07-08T19:45:00",
       "TimeDK": "2026-07-08T21:45:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 157.800003,
-      "DayAheadPriceDKK": 1179.523462
+      "DayAheadPriceDKK": 1179.491902
     },
     {
       "TimeUTC": "2026-07-08T20:00:00",
       "TimeDK": "2026-07-08T22:00:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 167.110001,
-      "DayAheadPriceDKK": 1249.113835
+      "DayAheadPriceDKK": 1249.080413
     },
     {
       "TimeUTC": "2026-07-08T20:15:00",
       "TimeDK": "2026-07-08T22:15:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 163.149994,
-      "DayAheadPriceDKK": 1219.513575
+      "DayAheadPriceDKK": 1219.480945
     },
     {
       "TimeUTC": "2026-07-08T20:30:00",
       "TimeDK": "2026-07-08T22:30:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 158.110001,
-      "DayAheadPriceDKK": 1181.840635
+      "DayAheadPriceDKK": 1181.809013
     },
     {
       "TimeUTC": "2026-07-08T20:45:00",
       "TimeDK": "2026-07-08T22:45:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 147.100006,
-      "DayAheadPriceDKK": 1099.543125
+      "DayAheadPriceDKK": 1099.513705
     },
     {
       "TimeUTC": "2026-07-08T21:00:00",
       "TimeDK": "2026-07-08T23:00:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 150.190002,
-      "DayAheadPriceDKK": 1122.640227
+      "DayAheadPriceDKK": 1122.610189
     },
     {
       "TimeUTC": "2026-07-08T21:15:00",
       "TimeDK": "2026-07-08T23:15:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 141.729996,
-      "DayAheadPriceDKK": 1059.403374
+      "DayAheadPriceDKK": 1059.375028
     },
     {
       "TimeUTC": "2026-07-08T21:30:00",
       "TimeDK": "2026-07-08T23:30:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 140.770004,
-      "DayAheadPriceDKK": 1052.227626
+      "DayAheadPriceDKK": 1052.199472
     },
     {
       "TimeUTC": "2026-07-08T21:45:00",
       "TimeDK": "2026-07-08T23:45:00",
       "PriceArea": "DK1",
       "DayAheadPriceEUR": 135.320007,
-      "DayAheadPriceDKK": 1011.489988
+      "DayAheadPriceDKK": 1011.462924
     }
   ]
 }
