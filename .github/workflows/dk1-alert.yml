@@ -27,9 +27,10 @@ jobs:
           node -e "
           const today = new Date().toISOString().slice(0,10);
           const tomorrow = new Date(Date.now()+86400000).toISOString().slice(0,10);
-          const url = 'https://api.energidataservice.dk/dataset/DayAheadPrices?start='+today+'&end='+tomorrow+'&filter='+encodeURIComponent('{\"PriceArea\":[\"DK1\"]}')+'&sort=TimeDK%20ASC&limit=0';
+          const url = 'https://api.energidataservice.dk/dataset/DayAheadPrices?start='+today+'&end='+tomorrow+'&columns=TimeUTC,TimeDK,PriceArea,DayAheadPriceDKK,DayAheadPriceEUR&sort=TimeDK%20ASC&limit=0';
           fetch(url).then(r => r.json()).then(d => {
-            const out = { date: today, fetchedAt: new Date().toISOString(), records: d.records || [] };
+            const records = (d.records || []).filter(r => !r.PriceArea || r.PriceArea === 'DK1');
+            const out = { date: today, fetchedAt: new Date().toISOString(), records };
             require('fs').writeFileSync('latest.json', JSON.stringify(out, null, 2));
             console.log('Wrote latest.json with', out.records.length, 'records');
           }).catch(e => { console.error('Fetch failed:', e); process.exit(1); });
