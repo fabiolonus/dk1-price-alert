@@ -54,7 +54,7 @@ async function fetchPrices() {
   const url =
     `https://api.energidataservice.dk/dataset/DayAheadPrices` +
     `?start=${today}&end=${tomorrow}` +
-    `&filter=${encodeURIComponent(`{"PriceArea":["${AREA}"]}`)}` +
+    `&columns=TimeUTC,TimeDK,PriceArea,DayAheadPriceDKK,DayAheadPriceEUR` +
     `&sort=TimeDK%20ASC&limit=0`;
 
   const res = await fetch(url);
@@ -63,7 +63,7 @@ async function fetchPrices() {
   const records = data.records || [];
   if (!records.length) throw new Error("API returned no records");
 
-  return records.map((r) => {
+  return records.filter((r) => !r.PriceArea || r.PriceArea === AREA).map((r) => {
     const h = new Date(r.TimeDK || r.HourDK || r.HourUTC);
     const hh = h.getHours();
     const mm = h.getMinutes();
